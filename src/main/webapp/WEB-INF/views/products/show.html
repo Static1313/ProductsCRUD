@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>Карточка продукта</title>
+</head>
+<body>
+
+<label for="id"><b>ID : </b></label>
+<a th:text="${product.getId()}" id="id">ID</a>
+<br>
+<label for="title"><b>Название: </b></label>
+<a th:text="${product.getTitle()}" id="title">Название</a>
+<br>
+<label for="desc"><b>Описание: </b></label>
+<a th:text="${product.getDescription()}" id="desc">Описание</a>
+<br>
+<label for="price"><b>Цена: </b></label>
+<a th:text="${product.getPrice() + ' руб.'}" id="price">Описание</a>
+<br>
+<hr/>
+<form th:method="GET" th:action="@{/products/{id}/edit(id=${product.getId()})}">
+    <input type="submit" value="Изменить данные продукта">
+</form>
+<br>
+<form th:method="DELETE" th:action="@{/products/{id}(id=${product.getId()})}">
+    <input type="submit" value="Удалить продукт">
+</form>
+<br>
+<form>
+    <button type="submit" formaction="/products">Вернуться к списку</button>
+</form>
+</body>
+</html>

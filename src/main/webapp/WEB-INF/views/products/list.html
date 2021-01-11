@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+</head>
+<body>
+<h1>Список продуктов:</h1>
+
+<div th:each="product : ${allProducts}">
+    <a th:href="@{/products/{id}(id = ${product.getId()})}"
+       th:text="${product.getTitle() + ',  ' + product.getPrice() + ' руб.'}">Описание</a>
+</div>
+
+<br/>
+<hr/>
+
+<form>
+    <button type="submit" formaction="/products/new">Добавить продукт</button>
+</form>
+
+</body>
+</html>

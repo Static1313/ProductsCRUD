@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>Изменение продукта</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/products/{id}(id=${product.getId()})}" th:object="${product}">
+    <label for="title">Введите новое название продукта: </label>
+    <input type="text" th:field="*{title}" id="title"/>
+    <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error</div>
+    <br/>
+
+    <label for="description">Введите новое описание продукта: </label>
+    <input type="text" th:field="*{description}" id="description">
+    <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">description error</div>
+    <br/>
+
+    <label for="description">Новая цена: </label>
+    <input type="text" th:field="*{price}" id="price">
+    <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price error</div>
+    <br/>
+    <hr/>
+    <input type="submit" value="Обновить"/>
+</form>
+<br>
+<form>
+    <button type="submit" formaction="/products">Вернуться к списку</button>
+</form>
+
+</body>
+</html>
